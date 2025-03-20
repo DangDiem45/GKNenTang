@@ -37,7 +37,6 @@ class _HomeScreenState extends State<HomeScreen> {
           GestureDetector(
             onTap: () {
               FirebaseAuth.instance.signOut();
-              // Replace Get.off with Navigator.pushReplacement
               Navigator.pushReplacement(
                 context, 
                 MaterialPageRoute(builder: (context) => SignIn())
@@ -111,10 +110,8 @@ class _HomeScreenState extends State<HomeScreen> {
       MaterialPageRoute(builder: (context) => CreateProduct()),
     );
     
-    // Optional: Refresh data if needed based on result
     if (result == true) {
       setState(() {
-        // Refresh state if needed
       });
     }
   }

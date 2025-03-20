@@ -17,7 +17,6 @@ class ProductList extends StatelessWidget {
     required this.searchQuery,
   }) : super(key: key);
 
-  // Show toast message
   void _showToast(String message, {bool isError = false}) {
     Fluttertoast.showToast(
       msg: message,
@@ -47,7 +46,6 @@ class ProductList extends StatelessWidget {
           return const Center(child: Text('No products found'));
         }
 
-        // Filter products based on search query
         var filteredDocs = snapshot.data!.docs.where((doc) {
           final data = doc.data() as Map<String, dynamic>;
           final productName = data['name'].toString().toLowerCase();
@@ -77,7 +75,6 @@ class ProductList extends StatelessWidget {
     );
   }
 
-  // Method to show dialog for editing a product
   void _showEditDialog(BuildContext context, String docId, Map<String, dynamic> data) {
     final TextEditingController nameController = TextEditingController(text: data['name']);
     String? selectedCategory = data['category'];
@@ -152,8 +149,6 @@ class ProductList extends StatelessWidget {
                   keyboardType: TextInputType.number,
                 ),
                 const SizedBox(height: 16),
-                // Thêm tiêu đề "Product Image"
-               
                 GestureDetector(
                   onTap: () async {
                     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
@@ -223,7 +218,7 @@ class ProductList extends StatelessWidget {
     );
   }
 
-  // Method to update an existing product using DatabaseMethod
+
   Future<void> _updateProduct(BuildContext context, String docId, String name, String category, String price, String imageUrl) async {
     try {
       await _databaseMethod.updateProduct(

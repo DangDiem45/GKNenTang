@@ -19,19 +19,17 @@ class DatabaseMethod {
     );
   }
 
-  // Stream to get all products
   Stream<QuerySnapshot> getProductsStream() {
     return _firestore.collection(productsCollection).snapshots();
   }
 
-  // Add a new product with random ID
   Future<String> addProduct({
     required String name,
     required String category,
     required double price,
-    required String imageUrl, // Thay String? thành required String để đồng bộ với CreateProduct
+    required String imageUrl,
   }) async {
-    String randomId = generateRandomId(20); // Generate a 20-character random ID
+    String randomId = generateRandomId(20); 
 
     await _firestore.collection(productsCollection).doc(randomId).set({
       'id': randomId,
@@ -41,16 +39,15 @@ class DatabaseMethod {
       'imageUrl': imageUrl,
     });
 
-    return randomId; // Return the generated ID
+    return randomId; 
   }
 
-  // Update an existing product
   Future<void> updateProduct({
     required String docId,
     required String name,
     required String category,
     required double price,
-    required String imageUrl, // Thay String? thành required String
+    required String imageUrl,
   }) async {
     await _firestore.collection(productsCollection).doc(docId).update({
       'name': name,
@@ -60,7 +57,6 @@ class DatabaseMethod {
     });
   }
 
-  // Delete a product
   Future<void> deleteProduct(String docId) async {
     await _firestore.collection(productsCollection).doc(docId).delete();
   }

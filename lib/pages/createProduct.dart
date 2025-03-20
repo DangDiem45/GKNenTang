@@ -192,7 +192,6 @@ class _CreateProductState extends State<CreateProduct> {
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 16),
-              // Image Picker
               const Text(
                 'Product Image',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
@@ -201,8 +200,8 @@ class _CreateProductState extends State<CreateProduct> {
               GestureDetector(
                 onTap: _pickImage,
                 child: Container(
-                  height: 100, // Thu nhỏ chiều cao từ 150 xuống 100
-                  width: 150,  // Thêm chiều rộng để thu nhỏ button
+                  height: 100,
+                  width: 150, 
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
